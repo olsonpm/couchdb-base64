@@ -1,5 +1,17 @@
 ## Base64 intended for use with couchdb
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+- [What is this?](#what-is-this)
+- [Why create it](#why-create-it)
+- [Install](#install)
+- [Character set used](#character-set-used)
+- [Simple example](#simple-example)
+- [API](#api)
+- [Test](#test)
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<br>
+
 
 ### What is this?
 
@@ -11,6 +23,7 @@ sequentially and using an encoding scheme that consumes fewer bytes. For
 example, something that takes 16 hex digits to represent can be done in 4 base
 62 digits (10 numerals, 26 lower case, 26 upper case).
 
+<br>
 
 ### Why create it
 
@@ -70,8 +83,7 @@ assert(decoded === timestamp)
 
 ### API
 
-
-`const couchdbBase64 = require('couchdb-base64')``
+`const couchdbBase64 = require('couchdb-base64')`
 
 The default export holds an object with two methods
 

@@ -3,16 +3,19 @@
   "version": "0.1.0",
   "description": "A Base64 encoding intended to compress couchdb document ids",
   "main": "index.js",
-  "keywords": ["couchdb", "base64"],
+  "keywords": [
+    "couchdb",
+    "base64"
+  ],
   "author": "phil olson",
   "license": "SEE LICENSE IN license.txt",
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-personal": "github:olsonpm/eslint-config-personal",
-    "esm": "^3.0.16",
-    "mocha": "^5.0.5",
-    "prettier": "^1.11.1"
+    "esm": "^3.0.27",
+    "mocha": "^5.1.1",
+    "prettier": "^1.12.1"
   },
   "eslintConfig": {
     "extends": "personal",
@@ -24,5 +27,6 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "semi": false
-  }
+  },
+  "dependencies": {}
 }
