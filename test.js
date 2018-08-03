@@ -3,7 +3,12 @@
 //---------//
 
 const chai = require('chai'),
-  { decodeToUInt, encodeFromUInt } = require('./index.js')
+  {
+    decodeToString,
+    decodeToUInt,
+    encodeFromString,
+    encodeFromUInt,
+  } = require('./index.js')
 
 //
 //------//
@@ -16,6 +21,62 @@ chai.should()
 //------//
 // Main //
 //------//
+
+suite('decodeToString', () => {
+  suite('success cases', () => {
+    test('simple value', () => {
+      decodeToString('O4JgP4wURqxmP4E').should.equal('hello world')
+    })
+  })
+
+  suite('error cases', () => {
+    test('not single arg passed', () => {
+      const badCall = () => decodeToString('one', 'two')
+      badCall.should.throw(/^This function takes exactly one argument/)
+    })
+    test('not a string passed', () => {
+      const badCall = () => decodeToString(1)
+      badCall.should.throw(
+        /^This function requires a string as its only argument/
+      )
+    })
+    test('empty string should throw an error', () => {
+      const decodeEmptyString = () => decodeToString('')
+      decodeEmptyString.should.throw(/^string must be non-empty$/)
+    })
+    test('empty non-base64 characters should throw an error', () => {
+      const decodeEmptyString = () => decodeToString('slash-is-invalid-/')
+      decodeEmptyString.should.throw(
+        /^Value is not a valid couchdbBase64 string/
+      )
+    })
+  })
+})
+
+suite('encodeFromString', () => {
+  suite('success cases', () => {
+    test('simple value', () => {
+      encodeFromString('hello world').should.equal('O4JgP4wURqxmP4E')
+    })
+  })
+
+  suite('error cases', () => {
+    test('not single arg passed', () => {
+      const badCall = () => encodeFromString('one', 'two')
+      badCall.should.throw(/^This function takes exactly one argument/)
+    })
+    test('not a string passed', () => {
+      const badCall = () => encodeFromString(1)
+      badCall.should.throw(
+        /^This function requires a string as its only argument/
+      )
+    })
+    test('empty string should throw an error', () => {
+      const decodeEmptyString = () => encodeFromString('')
+      decodeEmptyString.should.throw(/^string must be non-empty$/)
+    })
+  })
+})
 
 suite('decodeToUInt', () => {
   suite('success cases', () => {
@@ -43,9 +104,7 @@ suite('decodeToUInt', () => {
     })
     test('empty string should throw an error', () => {
       const decodeEmptyString = () => decodeToUInt('')
-      decodeEmptyString.should.throw(
-        /^Value is not a valid couchdbBase64 string/
-      )
+      decodeEmptyString.should.throw(/^string must be non-empty$/)
     })
     test('values above MAX_SAFE_INTEGER should throw', () => {
       const decodeAboveMaxInt = () => decodeToUInt('Vzzzzzzzz')
@@ -56,7 +115,7 @@ suite('decodeToUInt', () => {
   })
 })
 
-suite('encodeToUInt', () => {
+suite('encodeFromUInt', () => {
   suite('success cases', () => {
     test('low bound', () => {
       encodeFromUInt({ uint: 0, totalBits: 6 }).should.equal('-')

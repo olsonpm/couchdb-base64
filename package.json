@@ -1,6 +1,6 @@
 {
   "name": "couchdb-base64",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Base64 encoding intended to compress couchdb document ids",
   "main": "index.js",
   "keywords": [
@@ -15,7 +15,7 @@
     "eslint-config-personal": "github:olsonpm/eslint-config-personal",
     "esm": "^3.0.27",
     "mocha": "^5.1.1",
-    "prettier": "^1.12.1"
+    "prettier": "^1.14.0"
   },
   "eslintConfig": {
     "extends": "personal",
@@ -28,5 +28,7 @@
     "trailingComma": "es5",
     "semi": false
   },
-  "dependencies": {}
+  "dependencies": {
+    "tedent": "github:olsonpm/tedent#0.1.1"
+  }
 }
