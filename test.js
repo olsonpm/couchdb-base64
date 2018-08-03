@@ -8,6 +8,7 @@ const chai = require('chai'),
     decodeToUInt,
     encodeFromString,
     encodeFromUInt,
+    isCouchdbBase64String,
   } = require('./index.js')
 
 //
@@ -191,5 +192,17 @@ suite('encodeFromUInt', () => {
         /^The minimum number of bits to represent uint exceeds totalBits/
       )
     })
+  })
+})
+
+suite('isCouchdbBase64String', () => {
+  test('true', () => {
+    isCouchdbBase64String(
+      '-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    ).should.be.true
+  })
+  test('false', () => {
+    isCouchdbBase64String('').should.be.false
+    isCouchdbBase64String('#').should.be.false
   })
 })

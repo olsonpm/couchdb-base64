@@ -124,6 +124,12 @@ for the most part the uint <--> base64 conversions should be used._
 
 Decodes the passed couchdb base64 string into its original value
 
+#### `isCouchdbBase64String(anyString) -> boolean`
+
+Returns whether the the passed string is non-empty and contains only characters
+in the couchdb-base64 character set. Specifically it tests against this
+regex `/^[0-9A-Za-z-.]+$/`
+
 ### Test
 
 `./run test`

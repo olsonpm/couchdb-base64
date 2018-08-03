@@ -106,6 +106,8 @@ const decodeToUInt = (...args) => {
   return resultUint
 }
 
+const isCouchdbBase64String = aString => couchdbBase64Re.test(aString)
+
 //
 //------------------//
 // Helper Functions //
@@ -275,7 +277,7 @@ function validateTypeofStringArg(hopefulString) {
 }
 
 function validateCouchdbBase64String(hopefulCouchdbBase64String) {
-  if (!couchdbBase64Re.test(hopefulCouchdbBase64String)) {
+  if (!isCouchdbBase64String(hopefulCouchdbBase64String)) {
     throw new Error(
       tedent(`
         Value is not a valid couchdbBase64 string.  It must pass the
@@ -448,4 +450,5 @@ module.exports = {
   decodeToUInt,
   encodeFromString,
   encodeFromUInt,
+  isCouchdbBase64String,
 }
